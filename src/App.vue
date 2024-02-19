@@ -1,22 +1,46 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+import TheSummary from "./components/TheSummary.vue";
+
+export default {
+  components: {
+    TheSummary,
+  },
+  data: () => ({
+    tab: null,
+  }),
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-card>
+    <v-tabs v-model="tab" bg-color="primary">
+      <v-tab value="summary">Summary</v-tab>
+      <v-tab value="pageSpeed">Page Speed</v-tab>
+      <v-tab value="images">Images</v-tab>
+      <v-tab value="links">Links</v-tab>
+    </v-tabs>
 
-    <v-btn>Hello World</v-btn>
+    <v-card-item>
+      <v-window v-model="tab">
+        <v-window-item value="summary">
+          <v-card-title>Summary</v-card-title>
+          <TheSummary></TheSummary>
+        </v-window-item>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <v-window-item value="pageSpeed">
+          <v-card-title>Page Speed</v-card-title>
+        </v-window-item>
 
-  <main>
-    <TheWelcome />
-  </main>
+        <v-window-item value="images">
+          <v-card-title>Images</v-card-title>
+        </v-window-item>
+
+        <v-window-item value="links">
+          <v-card-title>Links</v-card-title>
+        </v-window-item>
+      </v-window>
+    </v-card-item>
+  </v-card>
 </template>
 
 <style scoped>
