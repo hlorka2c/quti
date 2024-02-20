@@ -1,13 +1,37 @@
 <script>
 import TheSummary from "./components/TheSummary.vue";
+import ThePageSpeed from "./components/ThePageSpeed.vue";
 
 export default {
   components: {
     TheSummary,
+    ThePageSpeed,
   },
   data: () => ({
     tab: null,
+    url: '',
   }),
+  mounted() {
+    const getURL = () => {
+      const url = document.URL;
+      return {url};
+    }
+    const ref = this;
+    const queryOptions = { active: true, lastFocusedWindow: true };
+    chrome.tabs.query(queryOptions, function (tabs) {
+      const id = tabs[0].id;
+      chrome.scripting
+        .executeScript({
+          target: { tabId: id, allFrames: true },
+          func: getURL,
+        })
+        .then((injectionResults) => {
+          const result = injectionResults[0].result;
+          console.log(result.url);
+          ref.url = result.url;
+        });
+    });
+  }
 };
 </script>
 
@@ -24,11 +48,12 @@ export default {
       <v-window v-model="tab">
         <v-window-item value="summary">
           <v-card-title>Summary</v-card-title>
-          <TheSummary></TheSummary>
+          <TheSummary :url="url"></TheSummary>
         </v-window-item>
 
         <v-window-item value="pageSpeed">
           <v-card-title>Page Speed</v-card-title>
+          <ThePageSpeed :currentPageURL="url"></ThePageSpeed>
         </v-window-item>
 
         <v-window-item value="images">
