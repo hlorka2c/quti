@@ -1,11 +1,15 @@
 <script>
 import TheSummary from "./components/TheSummary.vue";
 import ThePageSpeed from "./components/ThePageSpeed.vue";
+import TheImages from "./components/TheImages.vue";
+import TheLinks from './components/TheLinks.vue';
 
 export default {
   components: {
     TheSummary,
     ThePageSpeed,
+    TheImages,
+    TheLinks,
   },
   data: () => ({
     tab: null,
@@ -58,10 +62,12 @@ export default {
 
         <v-window-item value="images">
           <v-card-title>Images</v-card-title>
+          <TheImages></TheImages>
         </v-window-item>
 
         <v-window-item value="links">
           <v-card-title>Links</v-card-title>
+          <TheLinks></TheLinks>
         </v-window-item>
       </v-window>
     </v-card-item>
