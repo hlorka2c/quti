@@ -1,12 +1,11 @@
 <script>
-// import { inject } from "vue";
 import SummaryItem from "./SummaryItem.vue";
 
 export default {
   name: "summary",
   components: {
     SummaryItem,
-  },
+  }, 
   props: ["url"],
   data() {
     return {

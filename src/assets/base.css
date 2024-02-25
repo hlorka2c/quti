@@ -58,12 +58,6 @@
   font-weight: normal;
 }
 
-html, body {
-  width: 400px;
-  height: 400px;
-  max-height: 400px;
-}
-
 body {
   min-height: 100vh;
   color: var(--color-text);

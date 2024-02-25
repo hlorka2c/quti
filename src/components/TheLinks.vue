@@ -46,15 +46,35 @@ export default {
   <div class="d-flex justify-center flex-wrap ga-3">
     <div
       v-if="links"
-      style="background-color: lightgrey; padding: 8px"
+      style="padding: 8px; background-color: white"
       class="d-flex flex-column ga-3 w-100"
       v-for="link in links"
     >
       <div>
-        <a :href="link.href" target="_blank">{{ link.href }}</a>
-        <div>Text: {{ link.content ? link.content : 'empty' }}</div>
+        <a :href="link.href" class="link-href" target="_blank">
+          {{ link.href }}
+        </a>
+        <div style="color: black">
+          Text: {{ link.content ? link.content : "empty" }}
+        </div>
       </div>
     </div>
-    <div v-else>Ссылок не обнаружено.</div>
+    <div
+      class="error-page text-center d-flex justify-center align-center"
+      v-else
+    >
+      Ссылок не обнаружено.
+    </div>
   </div>
 </template>
+
+<style>
+.link-href {
+  color: blue;
+}
+
+.link-href:hover {
+  background-color: unset;
+  color: darkblue;
+}
+</style>

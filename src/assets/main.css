@@ -3,6 +3,8 @@
 #app {
   margin: 0 auto;
   font-weight: normal;
+  height: 400px;
+  width: 400px;
 }
 
 a,

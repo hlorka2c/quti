@@ -14,6 +14,7 @@ export default {
   data: () => ({
     tab: null,
     url: '',
+    color: 'blue',
   }),
   mounted() {
     const getURL = () => {
@@ -31,7 +32,6 @@ export default {
         })
         .then((injectionResults) => {
           const result = injectionResults[0].result;
-          console.log(result.url);
           ref.url = result.url;
         });
     });
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <v-card>
+  <v-card class="overflow-auto wrapper h-100 w-100" v-if="url" :color="color">
     <v-tabs v-model="tab" bg-color="primary">
       <v-tab value="summary">Summary</v-tab>
       <v-tab value="pageSpeed">Page Speed</v-tab>
@@ -72,9 +72,12 @@ export default {
       </v-window>
     </v-card-item>
   </v-card>
+  <v-card class="h-100 w-100" v-else>
+    <div class="error-page text-center h-100 d-flex justify-center align-center">Некорректная страница.</div>
+  </v-card>
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
 }
