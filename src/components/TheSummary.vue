@@ -1,5 +1,5 @@
 <script>
-import SummaryItem from "./SummaryItem.vue";
+import SummaryItem from "@/components/SummaryItem.vue";
 
 export default {
   name: "summary",

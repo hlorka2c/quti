@@ -1,8 +1,8 @@
 <script>
-import TheSummary from "./components/TheSummary.vue";
-import ThePageSpeed from "./components/ThePageSpeed.vue";
-import TheImages from "./components/TheImages.vue";
-import TheLinks from './components/TheLinks.vue';
+import TheSummary from "@/components/TheSummary.vue";
+import ThePageSpeed from "@/components/ThePageSpeed.vue";
+import TheImages from "@/components/TheImages.vue";
+import TheLinks from '@/components/TheLinks.vue';
 
 export default {
   components: {
