@@ -14,6 +14,7 @@ export default {
   data: () => ({
     tab: null,
     url: '',
+    test: true,
     color: 'blue',
   }),
   mounted() {
